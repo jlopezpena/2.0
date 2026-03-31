@@ -2146,8 +2146,8 @@ with tab3:
                 scheduler._get_shifts_for_date(d)
                 for d in scheduler._get_date_range(scheduler.start_date, scheduler.end_date)
             )
-            total_assigned = stats_df["Asignados"].sum()
-            avg_deviation = stats_df["Desviación"].mean()
+            total_assigned = int(stats_df["Asignados"].sum())
+            avg_deviation = float(stats_df["Desviación"].mean())
 
             with col1:
                 st.metric("Total Objetivo", total_target)
@@ -2176,8 +2176,8 @@ with tab3:
                 if is_weekend:
                     total_weekend_target += scheduler._get_shifts_for_date(d)
 
-            total_weekend_assigned = stats_df["Weekend"].sum()
-            avg_weekend_deviation = stats_df["Desv. Wknd"].mean()
+            total_weekend_assigned = int(stats_df["Weekend"].sum())
+            avg_weekend_deviation = float(stats_df["Desv. Wknd"].mean())
 
             with col4:
                 st.metric("Objetivo Fines de Semana", total_weekend_target)
@@ -3166,11 +3166,11 @@ with tab6:
                 st.metric("Total Trabajadores", total_workers)
 
             with col2:
-                total_shifts = st.session_state.revision_stats["Total"].sum()
+                total_shifts = int(st.session_state.revision_stats["Total"].sum())
                 st.metric("Total Guardias", total_shifts)
 
             with col3:
-                weekend_shifts = st.session_state.revision_stats["Total FS"].sum()
+                weekend_shifts = int(st.session_state.revision_stats["Total FS"].sum())
                 st.metric("Guardias F.S.", weekend_shifts)
 
             with col4:
